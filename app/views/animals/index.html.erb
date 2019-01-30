@@ -1,0 +1,27 @@
+<h1 style="color: green">List Of All Animals In The Park</h1
+<br>
+<%= link_to 'Add New Animal', new_animal_path %>
+<br>
+<table>
+  <tr>
+    <th>ID</th>
+    <th style="color: green">NAME</th>
+    <th>DISPLAY DETAILS</th>
+    <th style="color:green">EDIT DETAILS</th>
+    <th style="color:red">DELETE ANIMAL</th>
+    <th>ADD SIGHTING</th>
+  </tr>
+
+  <% @animals.each do |animal| %>
+    <tr>
+      <td><%= animal.id %></td>
+      <td><%= animal.name %></td>
+      <td><%= link_to 'show', animal_path(animal) %></td>
+      <td><%= link_to 'edit', edit_animal_path(animal) %></td>
+      <td><%= link_to 'delete', animal_path(animal),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to remove ' + animal.name + ' from the list' } %></td>
+              <td><%= link_to 'Add Sighting', new_animal_sighting_path(animal) %></td>
+    </tr>
+  <% end %>
+</table>

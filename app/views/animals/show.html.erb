@@ -1,0 +1,43 @@
+<h1 style="color:green">Animal Details</h1>
+
+<p>
+ <strong>Id of the Animal: </strong>
+ <%= @animal.id %>
+</p>
+
+<p>
+ <strong>Name of the Animal: </strong>
+ <%= @animal.name %>
+</p>
+
+<%= link_to 'Add Another Animal', new_animal_path %>
+<br>
+<%= link_to 'Add New Sighting', new_animal_sighting_path(@animal) %>
+
+<table>
+  <tr>
+    <th>SIGHTING ID</th>
+    <th style="color:green">SIGHTING DATE</th>
+    <th style="color:red">SIGHTING LATITUDE</th>
+    <th style="color:green">SIGHTING LONGITUDE</th>
+    <th style="color:gray">REGION</th>
+    <th>DISPLAY SIGHTING DETAILS</th>
+    <th style="color:red">EDIT SIGHTING DETAILS</th>
+    <th style="color:green">REMOVE SIGHTING DETAILS</th>
+  </tr>
+
+  <% @animal.sightings.each do |sighting| %>
+    <tr>
+      <td><%= sighting.id %></td>
+      <td><%= sighting.date %></td>
+      <td><%= sighting.latitude %></td>
+      <td><%= sighting.longitude %></td>
+      <td><%= sighting.region %></td>
+      <td><%= link_to 'show', animal_sighting_path(@animal, sighting) %></td>
+      <td><%= link_to 'edit', edit_animal_sighting_path(@animal, sighting) %></td>
+      <td><%= link_to 'delete', animal_sighting_path(@animal, sighting),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to remove sighting details?' } %></td>
+    </tr>
+  <% end %>
+</table>

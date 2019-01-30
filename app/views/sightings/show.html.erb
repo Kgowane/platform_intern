@@ -1,0 +1,24 @@
+<h1 style="color:green">Sighting Details</h1>
+
+<p>
+ <strong>Animal Name: </strong>
+ <%= @animal.name %>
+</p>
+
+<p>
+ <strong>Id of the Sighting: </strong>
+ <%= @sighting.id %>
+</p>
+
+<p>
+ <strong>Date of the Sighting: </strong>
+ <%= @sighting.date %>
+</p>
+
+<p>
+ <strong>Region: </strong>
+ <%= @sighting.region %>
+</p>
+
+
+<td><%= link_to 'View All The Sightings', animal_path(@animal) %></td>

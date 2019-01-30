@@ -1,0 +1,38 @@
+<%= form_with(model: [ @animal, @sighting ], local: true) do |form| %>
+  <% if @sighting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sighting.errors.count, "error") %> prohibited the animal from being added to the list</h2>
+      <ul>
+        <% @sighting.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>
+  <%= form.label :date %><br>
+  <%= form.date_field :date %>
+</p>
+
+<p>
+  <%= form.label :latitude %><br>
+  <%= form.text_field :latitude %>
+</p>
+
+<p>
+  <%= form.label :longitude %><br>
+  <%= form.text_field :longitude %>
+</p>
+
+<p>
+ <%= form.label :'Select Region' %><br>
+ <%= form.select :region, Sighting.regions.keys %>
+
+</p>
+
+<p>
+ <%= form.submit %>
+</p>
+
+<% end %>
